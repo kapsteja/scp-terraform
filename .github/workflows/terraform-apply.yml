@@ -28,9 +28,6 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name: Import existing resources
-        run: bash imports.sh
-
       - name: Terraform Plan
         run: terraform plan -out=tfplan
 
@@ -66,9 +63,6 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-
-      - name: Import existing resources
-        run: bash imports.sh
         
       - name: Download tfplan
         uses: actions/download-artifact@v4
