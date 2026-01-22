@@ -1,0 +1,40 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyAllActionsForRootUser",
+      "Effect": "Deny",
+      "Action": "*",
+      "Resource": "*",
+      "Condition": {
+        "StringLike": {
+          "aws:PrincipalArn": "arn:aws:iam::*:root"
+        }
+      }
+    },
+    {
+      "Sid": "AllowRootUserEssentialAccountActions",
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateVirtualMFADevice",
+        "iam:EnableMFADevice",
+        "iam:ListMFADevices",
+        "iam:ListVirtualMFADevices",
+        "iam:ResyncMFADevice",
+        "account:GetAccountInformation",
+        "account:GetContactInformation",
+        "account:PutContactInformation",
+        "billing:*",
+        "payments:*",
+        "support:*"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringLike": {
+          "aws:PrincipalArn": "arn:aws:iam::*:root"
+        }
+      }
+    }
+  ]
+}
+
